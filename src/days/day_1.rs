@@ -1,21 +1,21 @@
 use std::cmp;
 
-use crate::util;
+use util;
 
-fn main() {
+pub fn main() {
     let input = util::read_rows();
     println!("01_1: {}", star1(&input));
     println!("01_2: {}", star2(&input));
 }
 
-pub fn star1(input: &Vec<String>) -> u32 {
+fn star1(input: &Vec<String>) -> u32 {
     return input.split(|x| x == "")
         .map(sum_inventory)
         .reduce(|accum, item| cmp::max(accum, item))
         .unwrap();
 }
 
-pub fn star2(input: &Vec<String>) -> u32 {
+fn star2(input: &Vec<String>) -> u32 {
     let mut sums = input.split(|x| x == "")
         .map(sum_inventory).collect::<Vec<_>>();
     sums.sort();
