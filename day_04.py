@@ -22,5 +22,5 @@ def parse_line(line):
     return [int(x) for x in re.match(pattern, line).groups()] # type: ignore
 
 section_ids = [parse_line(line.rstrip()) for line in stdin.readlines()]
-print(f"03_1: {star1(section_ids)}")
-print(f"03_2: {star2(section_ids)}")
+print(f"04_1: {star1(section_ids)}")
+print(f"04_2: {star2(section_ids)}")
