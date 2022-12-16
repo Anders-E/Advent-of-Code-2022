@@ -1,6 +1,8 @@
 from sys import stdin
 from enum import IntEnum
 
+### Day 2
+
 class Hand(IntEnum):
     ROCK = 0
     PAPER = 1
@@ -37,8 +39,12 @@ def score2(hands):
     }[expected_result]
     return score((opponent, me))
 
-input = stdin.readlines()
-rows = map(str.rstrip, input)
-games = [[Hand.hand_from_char(c) for c in row.split(" ")] for row in rows]
+### Input etc.
+def parse_input(lines):
+    return [[int(item) for item in inventory.split('\n')] for inventory in lines.split("\n\n")]
+
+lines = stdin.readlines()
+lines = map(str.rstrip, lines)
+games = [[Hand.hand_from_char(c) for c in line.split(" ")] for line in lines]
 print(f"02_1: {star1(games)}")
 print(f"02_2: {star2(games)}")
